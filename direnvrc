@@ -343,7 +343,7 @@ use_flake() {
         local flake_input_paths
         mkdir -p "$flake_inputs"
         flake_input_paths=$(_nix flake archive \
-          --json --no-write-lock-file \
+          --json --no-write-lock-file --allow-dirty-locks \
           -- "$flake_uri")
 
         while [[ $flake_input_paths =~ /nix/store/[^\"]+ ]]; do
